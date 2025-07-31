@@ -11,3 +11,18 @@ const carrinho = [
 const totalGeral = carrinho.map(getTotal).reduce(somar)
 
 console.log(`O preço total dos items do carrinho é de: R$${totalGeral}`)
+
+Array.prototype.meuReduce = function(fn, inicial){
+    let acc = inicial
+    for(let i = 0; i < this.length; i++){
+        if(!acc && i === 0){
+            acc=this[i]
+            continue
+        }
+        acc = fn(acc, this[i], i, this)
+    }
+    return acc
+}
+
+const totalGeral2 = carrinho.map(getTotal).meuReduce(somar)
+console.log(`O preço total dos items do carrinho é de: R$${totalGeral2}`)
