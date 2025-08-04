@@ -21,5 +21,8 @@ function gerarVariosNumeros(){
         gerarNumeros(1,60, 100),
     ])
 }
-
+console.time('promise ')
 gerarVariosNumeros().then(n => console.log(n))
+                    .then(()=> {
+                        console.timeEnd('promise')
+                    })  
