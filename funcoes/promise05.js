@@ -40,11 +40,15 @@ function verificarAgenda(dia){
         }, 3000)
     })
 }
-verificarAgenda("quarta")
-        .then(msg => console.log(msg))
-        .catch(msg => console.log(msg))
+async function consultaAgendada(){
+    try{
+        console.log(await verificarAgenda("quinta"))
+    }catch(e){
+        console.log(e)
+    }
+}
 
-
+consultaAgendada()
 function enviarEmail(email){
     return new Promise((resolve,reject)=>{
         setTimeout(function(){
@@ -56,13 +60,11 @@ function enviarEmail(email){
         },2000)
     })
 }
-
-function gerarEmail(){
-    return Promise.all([
-        enviarEmail("naldo@email.com"),
-        enviarEmail("naldoemail.com"),
-        enviarEmail("naldo@emailcom")    
-    ])
+async function executar(){
+   try{
+    console.log( await enviarEmail("naldo@gmail.com")) 
+   }catch(e){
+    console.log(e)
+   } 
 }
-gerarEmail().then(msg => console.log(msg))
-            .catch(msg => console.log(msg))
+executar()
