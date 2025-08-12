@@ -3,9 +3,9 @@ const path = require('path')
 function lerDiretorio(caminho){
     return new Promise((resolve, reject)=>{
         try{
-            let arquivos = fs.readdirSync(caminho)
-            arquivos = arquivos.map(arquivo => path.join(caminho,arquivo))
-            resolve(arquivos)
+            const  arquivos = fs.readdirSync(caminho)
+            const arquivosCompletos = arquivos.map(arquivo => path.join(caminho,arquivo))
+            resolve(arquivosCompletos)
         }catch(e){
             reject(e)
         }
@@ -47,12 +47,27 @@ function removerNumeros(arr){
 function removerSimbolos(simbolos){
     return function(arr){
         return arr.map(el => {
-            let textoSemSimbolos = el
-            simbolos.forEach(simbolo => {
-                textoSemSimbolos = textoSemSimbolos.split(simbolo).join('')
-            })
-            return textoSemSimbolos
+            return simbolos.reduce((acc,el)=>{
+                return  acc.split(el).join('')
+            }, el)
         })
+    }
+}
+
+function mesclarConteudos(array){
+    return array.join(' ')
+}
+
+function separarTextoPor(simbolo){
+    return function(texto){
+        return texto.split(simbolo)
+    }
+}
+
+function ordenarPorAtributoNumerico(attr){
+    return function(array){
+        const desc =(o1,o2) => o2[attr] - o1[attr]
+        return array.sort(desc)
     }
 }
 module.exports = {
@@ -63,5 +78,8 @@ module.exports = {
     removerSeVazio,
     removerSeIncluir,
     removerNumeros,
-    removerSimbolos
+    removerSimbolos,
+    separarTextoPor,
+    mesclarConteudos,
+    ordenarPorAtributoNumerico
 }
