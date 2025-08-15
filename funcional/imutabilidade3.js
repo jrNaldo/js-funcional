@@ -1,12 +1,12 @@
-const pessoa = {
+const pessoa = Object.freeze({
     nome: 'Maria',
     altura: 1.76,
     cidade: 'São Paulo',
-    end:{
+    end:Object.freeze({
         rua: 'Felix'
-    }
-}
-// Passagem por referencia - Impura !!!
+    })
+})
+// Passagem por referencia - Impura
 function alteraPessoa(pessoa){
     const novaPessoa = { ...pessoa}
     novaPessoa.nome = 'Joao'
