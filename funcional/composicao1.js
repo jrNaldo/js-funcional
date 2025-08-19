@@ -15,6 +15,9 @@ function enfatizar(texto){
 function tornarLento(texto){
     return texto.split('').join(" ")
 }
-const resultado = composicao(gritar,enfatizar, tornarLento)('para')
-
-console.log(resultado)
+const exagerado = composicao(gritar,enfatizar, tornarLento)
+const umPoucoMenosExagerado = composicao(gritar,enfatizar)
+const resultado1 = exagerado('para')
+const resultado2 = umPoucoMenosExagerado ('cuidado com o buraco')
+console.log(resultado1)
+console.log(resultado2)
