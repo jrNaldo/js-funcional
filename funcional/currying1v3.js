@@ -1,0 +1,30 @@
+function textoComTamanhoEntre(min){
+    return function(max){
+        return function(err){
+            return function(texto){
+                const tamanho =  (texto || '').trim().length
+                if(tamanho < min || tamanho > max){
+                    throw err
+                }
+            }
+        }
+    }
+}
+function aplicarValidacao(fn){
+    return function(valor){
+        try{
+            fn(valor )
+        }catch(e){
+            return {error: e}
+        }
+    }
+}
+const forcarTamanhoPadrao = textoComTamanhoEntre(4)(255)
+const forcarNomeProdutoValido = forcarTamanhoPadrao('Nome: Invalido')
+const validarNomeProduto = aplicarValidacao(forcarNomeProdutoValido)
+const p1 = { nome: 'A', preco: 15.00, desc: 0.25}
+const p2 = { nome: 'Ab', preco: 15.00, desc: 0.25}
+const p3 = { nome: 'Ailays', preco: 15.00, desc: 0.25}
+console.log(validarNomeProduto(p1.nome))
+console.log(validarNomeProduto(p2.nome))
+console.log(validarNomeProduto(p3.nome))
