@@ -1,0 +1,23 @@
+{
+  "name": "js-funcional",
+  "version": "1.0.0",
+  "description": "Curso de JS no paradigma funcional",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrNaldo/js-funcional.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrNaldo/js-funcional/issues"
+  },
+  "homepage": "https://github.com/jrNaldo/js-funcional#readme",
+  "dependencies": {
+    "rxjs": "^7.8.2"
+  }
+}

@@ -5,6 +5,6 @@ const letrasAninhadas = [
 ]
 const letras = letrasAninhadas.flat(Infinity)
 const resultado = letras 
-.flatMap(l => l,'letra: ')
+.flatMap(l =>['letra:', l])
 console.log(letras)
 console.log(resultado)

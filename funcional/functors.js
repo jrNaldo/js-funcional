@@ -19,13 +19,18 @@ function tipoSeguro(valor){
                 const novoValor = fn(this.valor)
                 return tipoSeguro(novoValor)
             }
+        },
+        flatMap(fn){
+            return this.map(fn).valor
         }
     }
 }
+const original = 'Esse é um texto'
 
-const resultado = tipoSeguro('Texto')
-    .map(el => el.toUpperCase())
-    .map(el => `${el} !!!!!!!!!`)
-    .map(el => el.split('').join(' '))
+const alterado = tipoSeguro(original)
+    .map(t => t.toUpperCase()) 
+    .map(t => `${t} !!!!!`)
+    .flatMap(t => t.split('').join(' '))
 
-console.log(resultado.valor)
+console.log(original)
+console.log(alterado)
