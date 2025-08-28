@@ -1,5 +1,28 @@
-const { from, Observable } = require('rxjs')
+const { from, Observable} = require('rxjs')
 
+function primeiro(){
+    return function(fonte){
+        return new Observable(subscriber => {
+            fonte.subscribe({
+                next(v){
+                    subscriber.next(v)
+                    subscriber.complete()
+                }
+            })
+        })
+    }
+}
+function nenhum(){
+    return function(fonte){
+        return new Observable(subscriber =>{
+            fonte.subscribe({
+                next(v){
+                    subscriber.complete()
+                }
+            })
+        })
+    }
+}
 function ultimo(){
     return function(source){
         return new Observable(subscriber =>{
@@ -18,7 +41,7 @@ function ultimo(){
 }
 
 from([1,2,3,4,5,6])
-.pipe(ultimo())
+.pipe(nenhum())
 .subscribe(console.log)
 
 
