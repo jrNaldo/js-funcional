@@ -1,2 +1,2 @@
 # js-funcional
-Curso de JS no paradigma funcional
+Curso de JS sobre paradigma funcional
